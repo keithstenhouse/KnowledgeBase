@@ -51,7 +51,6 @@ articles.post('/add', (req, res) => {
 articles.get('/edit/:id', ensureAuthenticated, (req, res) => {
     articlesModel.findById(req.params.id, (err, article) => {
         // Ensure user owns the current article
-        console.log(article.author + " == " + req.user._id);
         if (article.author != req.user._id) {
             req.flash('danger', 'Not Authorised!');
             res.redirect('/');
