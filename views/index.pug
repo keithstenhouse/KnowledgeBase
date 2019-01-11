@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1 #{title}
+    br
+    ul.list-group
+        if articles.length == 0
+            li.list-group-item Be the first to write an article!
+        else
+            each article, i in articles
+                li.list-group-item
+                    a(href='/articles/'+article.id)= article.title
+    br
+    a.btn.btn-primary(href='/articles/add') Add Article
